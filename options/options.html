@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Showmark settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="../icons/icon128.png" alt="" width="72" height="72">
+      <h1>Showmark</h1>
+      <p class="lede">Draw on any web page. Your drawings never leave your browser.</p>
+    </header>
+
+    <section id="shortcut-ok" hidden>
+      <h2>Launch shortcut</h2>
+      <p>On any page, press <kbd id="combo"></kbd> to start drawing. Press it again to leave.</p>
+      <p class="hint">This shortcut is managed by the browser. <button id="change-shortcut" class="link">Change it</button></p>
+    </section>
+
+    <section id="shortcut-missing" hidden>
+      <h2>One thing to set up</h2>
+      <p>Chrome couldn't assign a launch shortcut automatically, probably because <kbd>Alt+Shift+S</kbd> is already taken.</p>
+      <ol>
+        <li>Click the button below. It opens your browser's extension shortcuts page.</li>
+        <li>Find <strong>Showmark</strong> and click the pencil next to "Toggle Showmark on the current page".</li>
+        <li>Press the key combination you want, then come back to this tab.</li>
+      </ol>
+      <button id="open-shortcuts" class="primary">Open shortcut settings</button>
+      <p class="hint">Or open <code>chrome://extensions/shortcuts</code> yourself.</p>
+    </section>
+
+    <section>
+      <h2>Shortcuts while drawing</h2>
+      <p class="hint">Click a key to change it, then press the new one. Single letters or digits 7–0 only.</p>
+      <table id="keys"></table>
+      <table class="fixed">
+        <tr><td><kbd>Shift</kbd> + drag</td><td>Perfect square or circle</td></tr>
+        <tr><td><kbd>1</kbd> – <kbd>6</kbd></td><td>Pick a color</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Clear everything</td></tr>
+        <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Exit Showmark (two quick presses)</td></tr>
+      </table>
+      <div class="row">
+        <button id="reset-keys" class="ghost">Reset to defaults</button>
+        <span id="key-status" class="hint" role="status"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Drawing</h2>
+      <div class="field">
+        <span class="label">Color</span>
+        <div id="colors" class="swatches"></div>
+      </div>
+      <div class="field">
+        <span class="label">Auto-erase</span>
+        <div id="fade" class="segmented" role="group" aria-label="Auto-erase delay"></div>
+      </div>
+      <p class="hint">These are the values Showmark starts with. You can still change them from the toolbar while drawing.</p>
+    </section>
+
+    <section>
+      <h2>Usage data</h2>
+      <label class="switch">
+        <input type="checkbox" id="analytics" disabled>
+        <span class="track" aria-hidden="true"></span>
+        <span>Share anonymous usage data</span>
+      </label>
+      <p class="hint">Counts which tools, colors, shortcuts and settings get used, so Showmark improves where it matters. Tied to a random ID, not to you. Never includes page addresses, page content or anything you type. <a href="https://gist.github.com/csbertran/ebae7dc93ad46e6d9f7c50414c48ab4f" target="_blank" rel="noopener">Privacy policy</a></p>
+      <p id="analytics-status" class="hint" role="status"></p>
+    </section>
+
+    <section>
+      <h2>Tip</h2>
+      <p>Pin Showmark from the puzzle-piece menu in the toolbar so you can also launch it with a click. Drag the drawing toolbar by its handle to move it; it remembers where you left it.</p>
+    </section>
+
+    <footer>
+      <p class="hint">Showmark can't run on browser pages such as <code>chrome://</code> or the Chrome Web Store.</p>
+    </footer>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

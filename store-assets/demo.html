@@ -1,0 +1,59 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Demo</title><style>
+*{box-sizing:border-box} body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f6f8;color:#1f2328;display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+aside{background:#fff;border-right:1px solid #e6e8eb;padding:24px 18px}
+.brand{font-weight:700;font-size:17px;margin-bottom:28px;display:flex;align-items:center;gap:10px}.brand i{width:26px;height:26px;border-radius:8px;background:#1f2328;display:inline-block}
+nav a{display:block;padding:9px 12px;border-radius:8px;color:#57606a;text-decoration:none;font-size:14px}nav a.on{background:#eef1f5;color:#1f2328;font-weight:600}
+main{padding:32px 40px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+h1{font-size:24px;margin:0;letter-spacing:-.01em}.btn{background:#1f2328;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 14px inherit;font-family:inherit}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}.card{background:#fff;border:1px solid #e6e8eb;border-radius:12px;padding:18px}
+.card small{color:#57606a;font-size:13px}.card b{display:block;font-size:26px;margin-top:6px;letter-spacing:-.02em}.card em{font-style:normal;font-size:12px;color:#1a7f37;font-weight:600}
+.panel{background:#fff;border:1px solid #e6e8eb;border-radius:12px;padding:20px 22px}.panel h2{font-size:15px;margin:0 0 16px}
+.chart{display:flex;align-items:flex-end;gap:10px;height:220px;border-bottom:1px solid #e6e8eb;padding-bottom:0}.chart div{flex:1;background:#d0d7de;border-radius:6px 6px 0 0}.chart div:nth-child(9),.chart div:nth-child(10){background:#1f2328}
+.x{display:flex;gap:10px;margin-top:8px;font-size:12px;color:#8b949e}.x span{flex:1;text-align:center}
+</style></head><body>
+<aside><div class="brand"><i></i>Northwind</div><nav><a class="on">Overview</a><a>Customers</a><a>Orders</a><a>Revenue</a><a>Settings</a></nav></aside>
+<main><header><h1>Overview</h1><button class="btn">Export report</button></header>
+<div class="cards"><div class="card"><small>Monthly revenue</small><b>$128,400</b><em>+12.4%</em></div><div class="card"><small>Active customers</small><b>2,314</b><em>+3.1%</em></div><div class="card"><small>Churn</small><b>1.8%</b><em style="color:#cf222e">+0.4%</em></div><div class="card"><small>Avg. order</small><b>$412</b><em>+5.6%</em></div></div>
+<div class="panel"><h2>Revenue, last 12 months</h2><div class="chart"><div style="height:38%"></div><div style="height:45%"></div><div style="height:41%"></div><div style="height:52%"></div><div style="height:58%"></div><div style="height:55%"></div><div style="height:63%"></div><div style="height:70%"></div><div style="height:82%"></div><div style="height:96%"></div><div style="height:78%"></div><div style="height:88%"></div></div>
+<div class="x"><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div></div></main>
+<script src="../content/showmark.js"></script>
+<script>
+(async () => {
+  const shot = location.hash.slice(1) || '1';
+  await window.__showmark.toggle();
+  const sr = document.querySelector('showmark-root').shadowRoot, overlay = sr.querySelector('.overlay');
+  const key = (k) => window.dispatchEvent(new KeyboardEvent('keydown', {key: k, bubbles: true}));
+  const pe = (t,x,y) => overlay.dispatchEvent(new PointerEvent(t,{clientX:x,clientY:y,button:0,pointerId:1,bubbles:true}));
+  const drag = (pts) => { pe('pointerdown',...pts[0]); for (const p of pts.slice(1)) pe('pointermove',...p); pe('pointerup',...pts[pts.length-1]); };
+  const box = (sel) => document.querySelector(sel).getBoundingClientRect();
+  const line = (x0, y0, x1, y1, n = 12) => { const pts = []; for (let i = 0; i <= n; i++) pts.push([x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n]); return pts; };
+  const wobble = (pts, amp = 1.2) => pts.map(([x, y], i) => [x + Math.sin(i * 1.7) * amp, y + Math.cos(i * 1.3) * amp]);
+
+  // 1. Amber rectangle around the Churn card
+  const c = box('.card:nth-child(3)'); key('r'); key('1'); drag([[c.left-8,c.top-8],[c.right+8,c.bottom+8]]);
+  // 2. Red circle around the Export button
+  const b = box('.btn'); key('c'); key('2'); drag([[b.left-22,b.top-14],[b.right+22,b.bottom+14]]);
+  // 3. Purple circle around the revenue figure
+  const rev = box('.card:nth-child(1) b'); key('c'); key('4'); drag([[rev.left-14,rev.top-6],[rev.right+14,rev.bottom+4]]);
+  // 4. Teal rectangle around the "Orders" nav item
+  const nav = box('nav a:nth-child(3)'); key('r'); key('5'); drag([[nav.left-4,nav.top-2],[nav.right+4,nav.bottom+2]]);
+  // 5. Green wavy underline beneath the two peak bars
+  const bars = [...document.querySelectorAll('.chart div')].slice(8,10).map(d=>d.getBoundingClientRect());
+  key('f'); key('3'); const y0 = bars[0].top - 26, x0 = bars[0].left - 10, x1 = bars[1].right + 10;
+  const pts=[]; for (let i=0;i<=30;i++) pts.push([x0+(x1-x0)*i/30, y0 + Math.sin(i/30*Math.PI*2)*6]); drag(pts);
+  // 6. Red arrow pointing at the churn increase
+  const churn = box('.card:nth-child(3) em'); key('f'); key('2');
+  const tip = [churn.left - 6, churn.bottom + 12], tail = [churn.left - 120, churn.bottom + 120];
+  drag(wobble(line(tail[0], tail[1], tip[0], tip[1], 20)));
+  // arrow head: two strokes 28° either side of the shaft, pointing back from the tip
+  const ang = Math.atan2(tail[1] - tip[1], tail[0] - tip[0]);
+  for (const d of [-0.5, 0.5]) drag(line(tip[0], tip[1], tip[0] + Math.cos(ang + d) * 24, tip[1] + Math.sin(ang + d) * 24, 4));
+  // 7. Green check marks next to the two healthy growth figures
+  key('f'); key('3');
+  for (const sel of ['.card:nth-child(2) em', '.card:nth-child(4) em']) {
+    const g = box(sel); const x = g.right + 14, y = g.top + 4;
+    drag(wobble([...line(x, y + 6, x + 6, y + 12, 4), ...line(x + 6, y + 12, x + 18, y - 2, 6)], 0.6));
+  }
+  if (shot === '2') { key('1'); sr.querySelector('.dot').click(); }
+})();
+</script></body></html>
