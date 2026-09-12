@@ -1,17 +1,24 @@
 # Chrome Web Store Listing — Showmark
 
-> Last Updated: 2026-09-11
+> Last Updated: 2026-09-12
 
 ## Store Listing
 
 **Extension Name** [REQUIRED]
-Showmark: Draw & Annotate on Any Web Page
+Showmark: Modern Draw & Annotate on Any Web Page
 
 **Short Description** [REQUIRED]
-Annotate any web page while presenting or screen sharing. Draw rectangles, circles & freehand highlights with keyboard shortcuts.
+A modern way to annotate any web page while presenting: rectangles, circles & freehand highlights, auto-erase, keyboard shortcuts.
 
 **Detailed Description** [REQUIRED]
-Showmark lets you draw on any web page while you present, demo or screen share, so everyone sees exactly what you are pointing at.
+Showmark is a modern annotation tool for presenting, demoing and screen sharing. Draw on any web page so everyone sees exactly what you are pointing at, without the dated toolbars, clutter and slowdowns of older drawing extensions.
+
+WHY SHOWMARK
+• Built for today's Chrome: a compact floating toolbar with a dark, translucent finish that stays out of the way of your content
+• Shapes un-draw themselves with a smooth animation instead of blinking off
+• Keyboard-first, so you never hunt for a button mid-sentence
+• Lightweight: nothing runs until you launch it, and the page underneath is never modified
+• Private: drawings never leave your browser, and usage statistics have an off switch
 
 FEATURES
 • Rectangles, circles and freehand strokes — pick a tool with one key (R, C, F) or from the floating toolbar
@@ -133,6 +140,11 @@ None. The store listing is the project's public page.
 |---------|------|---------|--------|
 | 1.0.0 | 2026-09-11 | First release: rectangle, circle and freehand tools; per-shape auto-erase with un-draw animation; color presets and custom picker; draggable, collapsible toolbar; keyboard shortcuts; settings page (also onboarding) with launch-shortcut status, remappable drawing shortcuts and drawing defaults. | Not submitted (superseded by 1.1.0) |
 | 1.1.0 | 2026-09-11 | Anonymous usage statistics (PostHog EU) with an off switch in settings; service worker is now an ES module. Privacy policy and data disclosure updated: "User activity" now collected. | Draft |
+| 1.1.0 | 2026-09-12 | Listing repositioned around "modern": new name, short description and a "Why Showmark" section. No code changes. | Draft |
+
+## Positioning
+
+"Modern" is the differentiator: competing annotation extensions look and behave like they were built a decade ago. Use the word once in the name and once in the short description, then back it with specifics (dark translucent toolbar, un-draw animation, keyboard-first, lightweight, private). Never repeat it as a keyword and never name competitors; both are Chrome Web Store rejection reasons.
 
 ## Review Notes
 

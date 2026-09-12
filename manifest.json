@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Showmark: Draw & Annotate on Any Web Page",
+  "name": "Showmark: Modern Draw & Annotate on Any Web Page",
   "short_name": "Showmark",
   "version": "1.1.0",
-  "description": "Annotate any web page while presenting or screen sharing. Draw rectangles, circles & freehand highlights with keyboard shortcuts.",
+  "description": "A modern way to annotate any web page while presenting: rectangles, circles & freehand highlights, auto-erase, keyboard shortcuts.",
   "minimum_chrome_version": "125",
   "permissions": [
     "activeTab",

@@ -1,6 +1,6 @@
 # Showmark
 
-Annotate any web page with rectangles, circles and freehand strokes. Built for demos, screen-shares and support calls. No build step, no dependencies. Drawings never leave the browser; anonymous usage statistics can be switched off in settings.
+A modern annotation tool for Chrome: draw rectangles, circles and freehand strokes on any web page while you present, demo or screen share. Compact dark toolbar, smooth un-draw animations, keyboard-first. No build step, no dependencies. Drawings never leave the browser; anonymous usage statistics can be switched off in settings.
 
 Works in Chrome 125+ and other Chromium browsers (Edge, Brave, Arc, Vivaldi, Opera).
 
