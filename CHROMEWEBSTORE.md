@@ -11,55 +11,54 @@ Showmark: Modern Draw & Annotate on Any Web Page
 A modern way to annotate any web page while presenting: rectangles, circles & freehand highlights, auto-erase, keyboard shortcuts.
 
 **Detailed Description** [REQUIRED]
-Showmark is a modern annotation tool for presenting, demoing and screen sharing. Draw on any web page so everyone sees exactly what you are pointing at, without the dated toolbars, clutter and slowdowns of older drawing extensions.
+Showmark is a modern annotation tool for presenting, demoing and screen sharing. Press one shortcut and draw rectangles, circles and freehand highlights on top of any web page, so everyone in the call sees exactly what you are pointing at. The page underneath is never modified, and your drawings disappear when you exit.
 
-WHY SHOWMARK
-• Built for today's Chrome: a compact floating toolbar with a dark, translucent finish that stays out of the way of your content
-• Shapes un-draw themselves with a smooth animation instead of blinking off
-• Keyboard-first, so you never hunt for a button mid-sentence
-• Lightweight: nothing runs until you launch it, and the page underneath is never modified
-• Private: drawings never leave your browser, and usage statistics have an off switch
+WHY YOU'LL LIKE IT
+• A compact floating toolbar with a dark, translucent finish that stays out of the way of your content
+• Shapes un-draw themselves with a smooth animation a few seconds after you finish them, so you never clean up mid-demo
+• Keyboard-first: switch tools, colors and settings without hunting for buttons
+• Lightweight: nothing runs until you launch it, and nothing slows down your browsing
+• Private: drawings never leave your browser, and usage statistics can be switched off in one click
 
 FEATURES
-• Rectangles, circles and freehand strokes — pick a tool with one key (R, C, F) or from the floating toolbar
-• Auto-erase — shapes un-draw themselves a few seconds after you finish them, so you never have to clean up mid-demo
+• Rectangles, circles and freehand strokes. Pick a tool with one key (R, C, F) or from the toolbar
+• Auto-erase after 2, 5 or 10 seconds, or keep shapes until you clear them
 • Six preset colors plus a custom color picker
-• Compact floating toolbar — drag it anywhere, collapse it to a single dot, and it remembers where you left it
-• Keyboard-first — Esc clears everything, two quick Esc presses exit, Shift-drag makes perfect squares and circles
-• Customizable — remap any drawing shortcut and set your default color and auto-erase delay from the settings page
+• Shift-drag for perfect squares and circles
+• Drag the toolbar anywhere or collapse it to a single dot; it remembers where you left it
 • Annotations stay attached to the content when you scroll
-• Works on any site, without changing the page underneath
-• Private by design — drawings never leave your browser, and the anonymous usage statistics have an off switch in settings
+• Remap every drawing shortcut and set your default color and auto-erase delay in Settings
+• Works on any website, in Chrome and other Chromium browsers
 
 HOW TO USE
-1. Press Alt+Shift+S (Option+Shift+S on Mac) on any page, or click the Showmark icon
+1. Press Alt+Shift+S (Option+Shift+S on Mac), or click the Showmark icon
 2. Drag to draw. Press R, C or F to switch between rectangle, circle and freehand
-3. Press 1–6 to change color, T to toggle auto-erase, H to collapse the toolbar
-4. Press Esc to clear, or Esc twice (or Q) to exit and get the page back
-5. Click the gear in the toolbar (or right-click the icon → Options) to change shortcuts and defaults
+3. Press 1 to 6 to change color, T to toggle auto-erase, H to collapse the toolbar
+4. Press Esc to clear everything, or Esc twice (or Q) to exit
+5. Click the gear in the toolbar to change shortcuts and defaults
 
-Your annotations are temporary: they disappear when you exit, reload or navigate. Nothing is saved to the page.
+Great for customer demos, online classes, code reviews, design walkthroughs, support calls and any video call where you share your screen.
 
 PRIVACY
-Your drawings, the pages you visit and anything you type never leave your browser. Preferences (tool, color, auto-erase timing, shortcuts and toolbar position) are kept on your device only. Showmark counts how its own buttons and shortcuts are used (for example "rectangle tool selected") under a random identifier, with no page addresses, page content or personal data, so it can improve where it matters. You can switch this off in settings at any time. There are no accounts and no ads.
+Your drawings, the pages you visit and anything you type never leave your browser. Showmark counts how its own buttons and shortcuts are used under a random identifier, with no page addresses, page content or personal data, so it can improve where it matters. You can switch this off in Settings at any time. No accounts, no ads.
 
 PERMISSIONS
-• "Read and change data on the site you are on" (activeTab) — needed to draw the overlay on the page you are looking at. It is granted only for the tab where you launch Showmark, and only after you press the shortcut or click the icon.
-• Storage — saves your preferences on your device.
+• "Read and change data on the site you are on" (activeTab): needed to draw the overlay on the page you are looking at. Granted only for the tab where you launch Showmark, and only after you press the shortcut or click the icon.
+• Storage: saves your preferences on your device.
+
+Showmark cannot draw on browser pages such as chrome:// or the Chrome Web Store.
 
 SUPPORT
-Found a bug or have a suggestion? Email showmark.support@gmail.com
-
-Version 1.1.0 — adds anonymous usage statistics with an off switch in settings.
+Questions or ideas? showmark.support@gmail.com
 
 **Category** [REQUIRED]
-Productivity
+Tools ("Herramientas" in the Spanish dashboard). "Productivity" no longer exists as a category; the alternative is Workflow & Planning.
 
 **Single Purpose** [REQUIRED]
 Draws temporary rectangle, circle and freehand annotations on top of the current web page.
 
 **Primary Language** [REQUIRED]
-English
+English (the listing, UI and privacy policy are all in English; add a Spanish translation later via the dashboard's language selector, not by mixing languages in one description).
 
 ## Graphics & Assets
 
@@ -68,18 +67,23 @@ English
 | Store Icon [REQUIRED] | 128×128 PNG | ✅ Ready | icons/icon128.png |
 | Screenshot 1 [REQUIRED] | 1280×800 | ✅ Ready | store-assets/screenshot-1.png |
 | Screenshot 2 [RECOMMENDED] | 1280×800 | ✅ Ready | store-assets/screenshot-2.png |
-| Screenshot 3 [RECOMMENDED] | 1280×800 | ⬜ Not created | |
-| Screenshot 4 | 1280×800 | ⬜ Not created | |
-| Screenshot 5 | 1280×800 | ⬜ Not created | |
-| Small Promo Tile [RECOMMENDED] | 440×280 | ⬜ Not created | |
-| Marquee Promo Tile | 1400×560 | ⬜ Not created | |
+| Screenshot 3 [RECOMMENDED] | 1280×800 | ✅ Ready | store-assets/screenshot-3.png |
+| Screenshot 4 | 1280×800 | ✅ Ready | store-assets/screenshot-4.png |
+| Screenshot 5 | 1280×800 | ✅ Ready | store-assets/screenshot-5.png |
+| Small Promo Tile [RECOMMENDED] | 440×280 | ✅ Ready | store-assets/promo-small.png |
+| Marquee Promo Tile | 1400×560 | ✅ Ready | store-assets/promo-marquee.png |
+
+All images are 24-bit PNG without alpha, generated by `store-assets/make-screenshots.sh` with headless Chrome.
+Upload the screenshots in this order; the first one is the listing's hero image.
 
 ### Screenshot Notes
-- Screenshot 1: a sample page annotated with a rectangle, a circle and a freehand stroke, toolbar visible at the bottom.
-- Screenshot 2: same page with the color popover open, showing the preset swatches.
-- Screenshots are generated from a mock page (not a third-party site) to avoid trademark issues. Regenerate them whenever the toolbar design changes.
-- Suggested screenshot 3: collapsed toolbar (single dot) to show how little space it takes.
-- Suggested screenshot 4: the settings page with the shortcut editor.
+- Screenshot 1: a sample page annotated with a rectangle, a circle and a freehand stroke, toolbar visible at the bottom (`demo.html#1`).
+- Screenshot 2: same page with the color popover open, showing the preset swatches (`demo.html#2`).
+- Screenshot 3: toolbar collapsed to a single dot, showing how little space it takes (`demo.html#3`).
+- Screenshot 4: the settings page with the launch shortcut confirmed and the shortcut editor (`settings-demo.html`, which shims the `chrome.*` APIs so the real options page renders from a file).
+- Screenshot 5: auto-erase popover open with the 5 s delay selected (`demo.html#5`).
+- Promo tiles: icon, name, one-line pitch with real Showmark annotations on the words, toolbar at the bottom (`promo.html#small`, `promo.html#marquee`).
+- Screenshots are generated from a mock page (not a third-party site) to avoid trademark issues. Regenerate everything whenever the toolbar, settings page or icon changes.
 
 ## Permissions Justification
 
@@ -140,7 +144,7 @@ None. The store listing is the project's public page.
 |---------|------|---------|--------|
 | 1.0.0 | 2026-09-11 | First release: rectangle, circle and freehand tools; per-shape auto-erase with un-draw animation; color presets and custom picker; draggable, collapsible toolbar; keyboard shortcuts; settings page (also onboarding) with launch-shortcut status, remappable drawing shortcuts and drawing defaults. | Not submitted (superseded by 1.1.0) |
 | 1.1.0 | 2026-09-11 | Anonymous usage statistics (PostHog EU) with an off switch in settings; service worker is now an ES module. Privacy policy and data disclosure updated: "User activity" now collected. | Draft |
-| 1.1.0 | 2026-09-12 | Listing repositioned around "modern": new name, short description and a "Why Showmark" section. No code changes. | Draft |
+| 1.1.0 | 2026-09-12 | Listing repositioned around "modern": new name, short description and a "Why Showmark" section; five screenshots and both promo tiles added. Submitted to the Chrome Web Store for review on 2026-09-12. | In review |
 
 ## Positioning
 

@@ -1,0 +1,58 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Promo</title><style>
+*{box-sizing:border-box}
+html,body{margin:0;overflow:hidden}
+body{width:var(--w);height:var(--h);background:#0c0e12;color:#e2e2e8;font:400 14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;position:relative}
+body::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(60% 80% at 15% 0%, rgba(255,152,91,.16), transparent 60%),
+  radial-gradient(50% 60% at 90% 100%, rgba(0,199,190,.10), transparent 60%)}
+.wrap{position:relative;height:var(--h);display:flex;align-items:center;gap:var(--gap);padding:var(--pad)}
+.wrap img{width:var(--icon);height:var(--icon);border-radius:22%;box-shadow:0 12px 40px -10px rgba(0,0,0,.8);flex:none}
+h1{margin:0;font-weight:600;letter-spacing:-.03em;font-size:var(--h1);line-height:1}
+p{margin:.35em 0 0;color:#9ca3af;font-size:var(--p);line-height:1.3}
+p b{color:#e2e2e8;font-weight:500}
+.chips{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.chips span{font-size:var(--chip);color:#dbc1b5;border:1px solid #333539;background:rgba(255,255,255,.04);border-radius:999px;padding:4px 10px}
+/* small tile 440x280 */
+body.small{--w:440px;--h:280px;--pad:20px 26px 66px;--gap:22px;--icon:96px;--h1:40px;--p:16px;--chip:11px}
+body.small .chips,body.small p.big{display:none}
+body.marquee p.sm{display:none}
+/* marquee 1400x560 */
+body.marquee{--w:1400px;--h:560px;--pad:0 120px 80px;--gap:56px;--icon:200px;--h1:96px;--p:32px;--chip:15px}
+</style></head>
+<body>
+<div class="wrap">
+  <img src="../icons/icon128.png" alt="">
+  <div>
+    <h1>Showmark</h1>
+    <p class="big">Draw on <b>any web page</b> while you <b>present</b>.<br>Rectangles, circles, freehand. <b>Auto-erase.</b> Keyboard first.</p>
+    <p class="sm">Draw on <b>any web page</b><br>while you <b>present</b>.<br><b>Auto-erase.</b> Keyboard first.</p>
+    <div class="chips"><span>No account</span><span>Drawings never leave your browser</span><span>Chrome 125+</span></div>
+  </div>
+</div>
+<script src="../content/showmark.js"></script>
+<script>
+(async () => {
+  const kind = location.hash.slice(1) || 'small';
+  document.body.classList.add(kind);
+  await window.__showmark.toggle();
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const sr = document.querySelector('showmark-root').shadowRoot, overlay = sr.querySelector('.overlay');
+  const key = (k) => window.dispatchEvent(new KeyboardEvent('keydown', {key: k, bubbles: true}));
+  const pe = (t,x,y) => overlay.dispatchEvent(new PointerEvent(t,{clientX:x,clientY:y,button:0,pointerId:1,bubbles:true}));
+  const drag = (pts) => { pe('pointerdown',...pts[0]); for (const p of pts.slice(1)) pe('pointermove',...p); pe('pointerup',...pts[pts.length-1]); };
+  const big = kind === 'marquee', pad = big ? 14 : 6, dy = big ? 0 : 6; // small tile renders ~6px high in headless
+  const box = (el) => { const r = el.getBoundingClientRect(); return { left: r.left, right: r.right, top: r.top + dy, bottom: r.bottom + dy }; };
+  const bs = document.querySelector(big ? 'p.big' : 'p.sm').querySelectorAll('b');
+  // amber rectangle around "any web page"
+  let r = box(bs[0]); key('r'); key('1'); drag([[r.left-pad,r.top-pad],[r.right+pad,r.bottom+pad]]);
+  // teal circle around "present"
+  r = box(bs[1]); key('c'); key('5'); drag([[r.left-pad*2,r.top-pad*1.5],[r.right+pad*2,r.bottom+pad*1.5]]);
+  // green wavy underline under "Auto-erase."
+  r = box(bs[2]); key('f'); key('3');
+  const pts=[]; const n=30, y0=r.bottom+(big?10:4), amp=big?5:2.5;
+  for (let i=0;i<=n;i++) pts.push([r.left+(r.right-r.left)*i/n, y0+Math.sin(i/n*Math.PI*2.5)*amp]);
+  drag(pts);
+  key('1');
+})();
+</script>
+</body></html>
