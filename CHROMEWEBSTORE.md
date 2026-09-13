@@ -1,6 +1,9 @@
 # Chrome Web Store Listing — Showmark
 
-> Last Updated: 2026-09-12
+**Live listing:** https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll
+**Extension ID:** dfojhmdfkljmojndockacpejlbflgpll
+
+> Last Updated: 2026-09-13
 
 ## Store Listing
 
@@ -144,7 +147,7 @@ https://csbertran.github.io/showmark/ (GitHub Pages from `docs/`). Verify it in 
 |---------|------|---------|--------|
 | 1.0.0 | 2026-09-11 | First release: rectangle, circle and freehand tools; per-shape auto-erase with un-draw animation; color presets and custom picker; draggable, collapsible toolbar; keyboard shortcuts; settings page (also onboarding) with launch-shortcut status, remappable drawing shortcuts and drawing defaults. | Not submitted (superseded by 1.1.0) |
 | 1.1.0 | 2026-09-11 | Anonymous usage statistics (PostHog EU) with an off switch in settings; service worker is now an ES module. Privacy policy and data disclosure updated: "User activity" now collected. | Draft |
-| 1.1.0 | 2026-09-12 | Listing repositioned around "modern": new name, short description and a "Why Showmark" section; five screenshots and both promo tiles added. Submitted to the Chrome Web Store for review on 2026-09-12. | In review |
+| 1.1.0 | 2026-09-12 | Listing repositioned around "modern": new name, short description and a "Why Showmark" section; five screenshots and both promo tiles added. Submitted 2026-09-12, approved and published 2026-09-13. | Published |
 
 ## Positioning
 

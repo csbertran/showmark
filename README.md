@@ -8,6 +8,10 @@ Website: https://csbertran.github.io/showmark/ (source in `docs/`, served by Git
 
 ## Install
 
+From the Chrome Web Store: https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll
+
+Or load the source unpacked:
+
 1. Open `chrome://extensions` (or `edge://extensions`, `brave://extensions`).
 2. Turn on **Developer mode** (top right).
 3. Click **Load unpacked** and select this folder.

@@ -15,3 +15,4 @@ Key facts:
 - [Home](https://csbertran.github.io/showmark/): features, how it works, FAQ
 - [Privacy policy](https://csbertran.github.io/showmark/privacy.html)
 - [Source code](https://github.com/csbertran/showmark)
+- [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll)
