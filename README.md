@@ -4,6 +4,8 @@ A modern annotation tool for Chrome: draw rectangles, circles and freehand strok
 
 Works in Chrome 125+ and other Chromium browsers (Edge, Brave, Arc, Vivaldi, Opera).
 
+Website: https://csbertran.github.io/showmark/ (source in `docs/`, served by GitHub Pages).
+
 ## Install
 
 1. Open `chrome://extensions` (or `edge://extensions`, `brave://extensions`).
@@ -61,6 +63,7 @@ Showmark counts how its own controls are used (tool, color, shortcut, settings) 
 - `DESIGN.md` – design system (Dark Graphite Precision Amber) the UI follows.
 - `CHROMEWEBSTORE.md` – store listing copy, permission justifications and publishing checklist.
 - `PRIVACY.md` – privacy policy text to host publicly.
+- `docs/` – landing page (GitHub Pages): FAQ, structured data, `llms.txt`, `robots.txt`, `sitemap.xml`, and `privacy.html` generated from `PRIVACY.md`. Keep the two privacy texts in sync.
 - `package.sh` – builds the ZIP for the Chrome Web Store (ships only runtime files).
 
 ## Publish

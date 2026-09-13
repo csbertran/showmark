@@ -117,7 +117,7 @@ UI preferences stay in `chrome.storage.local` on the device. Annotations exist o
 **Privacy Policy URL** [REQUIRED]
 https://gist.github.com/csbertran/ebae7dc93ad46e6d9f7c50414c48ab4f
 
-Public gist of `PRIVACY.md`. Keep the two in sync: edit `PRIVACY.md` here, then paste it into the gist. Contact in the gist must read showmark.support@gmail.com.
+Public gist of `PRIVACY.md`. The same text is also published at https://csbertran.github.io/showmark/privacy.html; once the extension is live, switch the listing to that URL and retire the gist. Edit `PRIVACY.md` first, then regenerate `docs/privacy.html` and update the gist. Contact must read showmark.support@gmail.com.
 
 ## Distribution
 
@@ -136,7 +136,7 @@ showmark.support@gmail.com
 showmark.support@gmail.com
 
 **Homepage URL** [RECOMMENDED]
-None. The store listing is the project's public page.
+https://csbertran.github.io/showmark/ (GitHub Pages from `docs/`). Verify it in Google Search Console with the same Google account as the developer dashboard, then set it as the official website in the dashboard's Account tab for the verified-publisher checkmark.
 
 ## Version History
 

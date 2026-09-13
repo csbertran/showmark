@@ -1,0 +1,17 @@
+# Showmark
+
+> Showmark is a free, modern Chrome extension that lets you draw rectangles, circles and freehand highlights on top of any web page while you present, demo or screen share. Shapes can auto-erase a few seconds after you draw them, everything is driven from the keyboard, and drawings never leave the browser.
+
+Key facts:
+- Category: browser extension, screen annotation, presentation tool. Works in Chrome 125+ and other Chromium browsers (Edge, Brave, Arc, Vivaldi, Opera).
+- Launch: Alt+Shift+S (Option+Shift+S on Mac) or the toolbar icon. Tools: R rectangle, C circle, F freehand. 1-6 colors, T auto-erase, H collapse toolbar, Esc clear, Esc Esc or Q exit. Shift-drag for perfect squares and circles.
+- Works with any video call or recording software where you share your screen or a tab (Google Meet, Zoom, Microsoft Teams, Loom), because it draws on the browser tab itself.
+- Annotations are temporary and anchored to the page content while scrolling. The page underneath is never modified.
+- Privacy: drawings, page addresses and page content are never collected. Anonymous usage statistics about Showmark's own controls can be switched off in Settings.
+- Price: free. No account, no ads.
+- Publisher: Carles Salvador. Support: showmark.support@gmail.com
+
+## Pages
+- [Home](https://csbertran.github.io/showmark/): features, how it works, FAQ
+- [Privacy policy](https://csbertran.github.io/showmark/privacy.html)
+- [Source code](https://github.com/csbertran/showmark)

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Showmark – Draw and annotate on any web page while you present</title>
+  <meta name="description" content="Showmark is a modern Chrome extension to draw rectangles, circles and freehand highlights on any web page while presenting or screen sharing. Auto-erase, keyboard shortcuts, nothing leaves your browser.">
+  <link rel="canonical" href="https://csbertran.github.io/showmark/">
+  <link rel="icon" href="icon.png">
+  <!-- Google Search Console: paste the content value from Search Console → URL prefix property → HTML tag -->
+  <meta name="google-site-verification" content="REPLACE_WITH_SEARCH_CONSOLE_TOKEN">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Showmark – Draw and annotate on any web page while you present">
+  <meta property="og:description" content="A modern Chrome extension for annotating any web page during demos, classes and screen shares. Free, keyboard-first, private.">
+  <meta property="og:url" content="https://csbertran.github.io/showmark/">
+  <meta property="og:image" content="https://csbertran.github.io/showmark/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0c0e12">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Showmark",
+        "alternateName": "Showmark: Modern Draw & Annotate on Any Web Page",
+        "applicationCategory": "BrowserApplication",
+        "applicationSubCategory": "Screen annotation",
+        "operatingSystem": "Chrome 125+, Microsoft Edge, Brave, Arc, Vivaldi, Opera",
+        "browserRequirements": "Requires a Chromium-based browser, version 125 or newer",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "A modern Chrome extension to draw rectangles, circles and freehand highlights on any web page while presenting or screen sharing. Shapes auto-erase after a few seconds, everything is keyboard-driven, and drawings never leave the browser.",
+        "url": "https://csbertran.github.io/showmark/",
+        "image": "https://csbertran.github.io/showmark/img/og.png",
+        "screenshot": "https://csbertran.github.io/showmark/img/annotate.png",
+        "softwareVersion": "1.1.0",
+        "featureList": [
+          "Rectangle, circle and freehand drawing on any web page",
+          "Auto-erase after 2, 5 or 10 seconds",
+          "Keyboard shortcuts for every action",
+          "Six preset colors plus a custom color picker",
+          "Draggable, collapsible floating toolbar",
+          "Annotations stay attached to content while scrolling",
+          "Remappable shortcuts and drawing defaults"
+        ],
+        "author": { "@type": "Person", "name": "Carles Salvador" },
+        "privacyPolicy": "https://csbertran.github.io/showmark/privacy.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I draw on a web page while screen sharing in Chrome?", "acceptedAnswer": { "@type": "Answer", "text": "Install Showmark, press Alt+Shift+S (Option+Shift+S on Mac) on any page and drag to draw. Press R, C or F to switch between rectangle, circle and freehand, Esc to clear, and Esc twice to exit. The drawing overlay sits on top of the page, so anyone watching your shared screen or tab sees it." } },
+          { "@type": "Question", "name": "Does Showmark work in Google Meet, Zoom or Microsoft Teams calls?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Showmark draws on the browser tab itself, so it works with any video call or recording tool where you share your screen or a Chrome tab. It does not depend on the call software." } },
+          { "@type": "Question", "name": "Do the annotations disappear on their own?", "acceptedAnswer": { "@type": "Answer", "text": "Optionally. Turn on auto-erase and each shape un-draws itself 2, 5 or 10 seconds after you finish it, so you never have to clean up mid-demo. With auto-erase off, shapes stay until you press Esc." } },
+          { "@type": "Question", "name": "Does Showmark save or upload my drawings or the pages I visit?", "acceptedAnswer": { "@type": "Answer", "text": "No. Drawings exist only while the overlay is open and are discarded when you exit, reload or navigate. Page addresses and content are never collected. Showmark counts how its own buttons and shortcuts are used under a random identifier, and you can switch that off in Settings." } },
+          { "@type": "Question", "name": "Do annotations stay in place when I scroll?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shapes are anchored to the page content, so they move with it when you scroll." } },
+          { "@type": "Question", "name": "Can I change the keyboard shortcuts?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every drawing shortcut can be remapped on the Settings page, and the launch shortcut is managed in chrome://extensions/shortcuts." } },
+          { "@type": "Question", "name": "Which browsers does Showmark support?", "acceptedAnswer": { "@type": "Answer", "text": "Google Chrome 125 or newer and other Chromium browsers such as Microsoft Edge, Brave, Arc, Vivaldi and Opera. It cannot draw on browser pages such as chrome:// or the Chrome Web Store." } },
+          { "@type": "Question", "name": "Is Showmark free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Showmark is free, has no account and no ads." } }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --canvas: #0c0e12; --surface: #111317; --surface-1: #16181d; --surface-high: #1e2024; --surface-highest: #282a2e;
+      --border: #282a2e; --border-2: #333539; --divider: rgba(255,255,255,.08);
+      --fg: #e2e2e8; --muted: #9ca3af; --primary: #ff985b; --on-primary: #111317; --primary-glow: rgba(255,152,91,.25);
+      --teal: #00c7be; --green: #34c759;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--canvas); color: var(--fg); font: 400 1rem/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+    body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: radial-gradient(60% 50% at 20% 0%, rgba(255,152,91,.14), transparent 60%),
+                  radial-gradient(40% 40% at 90% 20%, rgba(0,199,190,.08), transparent 60%); }
+    a { color: var(--primary); text-underline-offset: 3px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
+    header.top { display: flex; align-items: center; justify-content: space-between; padding-block: 18px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; color: var(--fg); }
+    .brand img { width: 32px; height: 32px; border-radius: 8px; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: .9375rem; }
+    nav a:hover { color: var(--fg); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; appearance: none; border: 0; border-radius: 8px; cursor: pointer;
+           font: 600 .9375rem/1 var(--sans); padding: 0 18px; height: 44px; text-decoration: none; transition: filter .12s ease, box-shadow .12s ease; }
+    .btn.primary { background: var(--primary); color: var(--on-primary); }
+    .btn.primary:hover { filter: brightness(1.08); box-shadow: 0 0 0 1px var(--primary), 0 0 16px var(--primary-glow); }
+    .btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--border-2); }
+    .btn.ghost:hover { background: var(--surface-high); }
+    .hero { padding-block: 56px 32px; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; letter-spacing: -.03em; margin: 0 0 16px; font-weight: 600; }
+    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero p.lede { color: var(--muted); font-size: clamp(1.0625rem, 2vw, 1.25rem); max-width: 640px; margin: 0 auto 28px; }
+    .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .fine { color: var(--muted); font-size: .8125rem; margin-top: 14px; }
+    kbd { display: inline-block; font: 500 .75rem/1 var(--mono); padding: 4px 7px; color: var(--muted); background: var(--surface-high);
+          border: 1px solid var(--border); border-bottom: 2px solid #22252a; border-radius: 4px; vertical-align: middle; }
+    .shot { margin: 40px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 30px 80px -30px rgba(0,0,0,.9); max-width: 100%; }
+    .shot img { display: block; width: 100%; height: auto; }
+    section { padding-block: 64px; }
+    section h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.02em; margin: 0 0 8px; font-weight: 600; }
+    section p.sub { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 18px 18px 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
+    .card h3 { margin: 0 0 6px; font-size: 1rem; font-weight: 600; }
+    .card p { margin: 0; color: var(--muted); font-size: .9375rem; }
+    .card .ic { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; margin-bottom: 12px; background: rgba(255,152,91,.12); color: var(--primary); }
+    .card .ic svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .step { position: relative; padding: 18px 18px 18px 56px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; }
+    .step::before { counter-increment: s; content: counter(s); position: absolute; left: 16px; top: 16px; width: 28px; height: 28px; border-radius: 50%;
+                    display: grid; place-items: center; background: var(--primary); color: var(--on-primary); font: 600 .875rem/1 var(--sans); }
+    .step h3 { margin: 0 0 4px; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .9375rem; }
+    .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: center; }
+    .two .shot { margin: 0; }
+    table.keys { border-collapse: collapse; width: 100%; font-size: .9375rem; }
+    table.keys td { padding: 9px 0; border-top: 1px solid var(--divider); }
+    table.keys tr:first-child td { border-top: 0; }
+    table.keys td:first-child { width: 150px; color: var(--muted); white-space: nowrap; }
+    .faq details { border-top: 1px solid var(--divider); padding: 4px 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--divider); }
+    .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--muted); font-weight: 400; flex: none; }
+    .faq details[open] summary::after { content: '–'; }
+    .faq p { margin: 0 0 14px; color: var(--muted); }
+    .privacy { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .privacy ul { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+    footer { border-top: 1px solid var(--divider); padding-block: 28px 48px; color: var(--muted); font-size: .875rem; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: var(--muted); }
+    @media (max-width: 640px) { nav a:not(:last-child) { display: none; } section { padding-block: 44px; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32">Showmark</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://github.com/csbertran/showmark">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" style="padding-top:56px">
+      <h1>Draw on <em>any web page</em><br>while you present.</h1>
+      <p class="lede">Showmark is a modern Chrome extension for annotating the page you're sharing: rectangles, circles and freehand highlights that erase themselves, driven from the keyboard. Nothing leaves your browser.</p>
+      <div class="cta">
+        <!-- TODO: replace with the item URL once published: https://chromewebstore.google.com/detail/<extension-id> -->
+        <a class="btn primary" id="install" href="https://chromewebstore.google.com/search/Showmark?utm_source=landing&utm_medium=web&utm_campaign=hero">Add to Chrome, it's free</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <p class="fine">Chrome 125+, Edge, Brave, Arc, Vivaldi and Opera. No account. Press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> to start.</p>
+      <figure class="shot" style="max-width:960px">
+        <img src="img/annotate.png" alt="A dashboard web page annotated with Showmark: an orange rectangle around a KPI card, a red circle around a button, a purple circle around a figure, a green underline under a chart peak and a red freehand arrow. The floating toolbar sits at the bottom." width="1280" height="800" loading="eager">
+      </figure>
+    </section>
+
+    <section id="features">
+      <h2>Built for live demos, not for editing screenshots</h2>
+      <p class="sub">Every detail is there so you can keep talking while you point.</p>
+      <div class="grid">
+        <div class="card"><div class="ic"><svg viewBox="0 0 16 16"><rect x="2.5" y="3.5" width="11" height="9" rx="1.5"/></svg></div><h3>Three tools, one key each</h3><p>Rectangle (R), circle (C) and freehand (F). Hold Shift for perfect squares and circles.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3.2l2.2 1.3"/></svg></div><h3>Auto-erase</h3><p>Shapes un-draw themselves 2, 5 or 10 seconds after you finish them. No cleanup mid-sentence.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 16 16"><path d="M3 5h10M3 8h10M3 11h6"/></svg></div><h3>Keyboard-first</h3><p>1 to 6 picks a color, T toggles auto-erase, H collapses the toolbar, Esc clears, Esc Esc exits.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="3"/></svg></div><h3>A toolbar that gets out of the way</h3><p>Compact, dark and translucent. Drag it anywhere or collapse it to a single dot. It remembers where you left it.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 16 16"><path d="M8 2v12M3 7l5-5 5 5"/></svg></div><h3>Scroll-safe</h3><p>Annotations stay attached to the content when you scroll, so long pages are fine.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 16 16"><path d="M8 2l5 2v4c0 3-2.2 5-5 6-2.8-1-5-3-5-6V4z"/></svg></div><h3>Private by design</h3><p>Drawings never leave your browser. The page underneath is never modified. Usage statistics have an off switch.</p></div>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2>How it works</h2>
+      <p class="sub">Three steps, no setup beyond installing.</p>
+      <div class="steps">
+        <div class="step"><h3>Launch</h3><p>Press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> (<kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>S</kbd> on Mac) on any page, or click the Showmark icon.</p></div>
+        <div class="step"><h3>Draw</h3><p>Drag to draw. <kbd>R</kbd>, <kbd>C</kbd>, <kbd>F</kbd> switch tools, <kbd>1</kbd>–<kbd>6</kbd> change color, <kbd>T</kbd> turns auto-erase on.</p></div>
+        <div class="step"><h3>Clear or exit</h3><p><kbd>Esc</kbd> clears everything. Press <kbd>Esc</kbd> twice, or <kbd>Q</kbd>, to exit and get the page back untouched.</p></div>
+      </div>
+
+      <div class="two" style="margin-top:40px">
+        <figure class="shot"><img src="img/auto-erase.png" alt="Showmark toolbar with the auto-erase menu open, showing Off, 2 s, 5 s and 10 s options" width="1280" height="800" loading="lazy"></figure>
+        <div>
+          <h3 style="margin:0 0 8px;font-size:1.25rem">Shortcuts while drawing</h3>
+          <table class="keys">
+            <tr><td><kbd>R</kbd> <kbd>C</kbd> <kbd>F</kbd></td><td>Rectangle, circle, freehand</td></tr>
+            <tr><td><kbd>Shift</kbd> + drag</td><td>Perfect square or circle</td></tr>
+            <tr><td><kbd>1</kbd> – <kbd>6</kbd></td><td>Preset colors (custom picker in the toolbar)</td></tr>
+            <tr><td><kbd>T</kbd></td><td>Toggle auto-erase</td></tr>
+            <tr><td><kbd>H</kbd></td><td>Collapse or expand the toolbar</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Clear everything</td></tr>
+            <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd> or <kbd>Q</kbd></td><td>Exit Showmark</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:.9375rem;margin:14px 0 0">All of them except Esc and 1–6 can be remapped in Settings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="uses">
+      <h2>Where it earns its place</h2>
+      <p class="sub">Any moment where you're talking over a browser window and want people to look at the right thing.</p>
+      <div class="grid">
+        <div class="card"><h3>Customer demos and sales calls</h3><p>Circle the feature you're describing instead of saying "top right, no, a bit lower".</p></div>
+        <div class="card"><h3>Online classes and workshops</h3><p>Underline the line of code, the formula or the paragraph while you explain it.</p></div>
+        <div class="card"><h3>Code and design reviews</h3><p>Box the component that needs work in the deployed app or the prototype, live.</p></div>
+        <div class="card"><h3>Support calls</h3><p>Show the customer exactly which button to press on their own web app.</p></div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2>Frequently asked questions</h2>
+      <p class="sub">Short answers to what people ask before installing.</p>
+      <details><summary>How do I draw on a web page while screen sharing in Chrome?</summary><p>Install Showmark, press Alt+Shift+S (Option+Shift+S on Mac) on any page and drag to draw. Press R, C or F to switch between rectangle, circle and freehand, Esc to clear, and Esc twice to exit. The drawing overlay sits on top of the page, so anyone watching your shared screen or tab sees it.</p></details>
+      <details><summary>Does Showmark work in Google Meet, Zoom or Microsoft Teams calls?</summary><p>Yes. Showmark draws on the browser tab itself, so it works with any video call or recording tool where you share your screen or a Chrome tab. It does not depend on the call software.</p></details>
+      <details><summary>Do the annotations disappear on their own?</summary><p>Optionally. Turn on auto-erase and each shape un-draws itself 2, 5 or 10 seconds after you finish it, so you never have to clean up mid-demo. With auto-erase off, shapes stay until you press Esc.</p></details>
+      <details><summary>Does Showmark save or upload my drawings or the pages I visit?</summary><p>No. Drawings exist only while the overlay is open and are discarded when you exit, reload or navigate. Page addresses and content are never collected. Showmark counts how its own buttons and shortcuts are used under a random identifier, and you can switch that off in Settings. <a href="privacy.html">Privacy policy</a>.</p></details>
+      <details><summary>Do annotations stay in place when I scroll?</summary><p>Yes. Shapes are anchored to the page content, so they move with it when you scroll.</p></details>
+      <details><summary>Can I change the keyboard shortcuts?</summary><p>Yes. Every drawing shortcut can be remapped on the Settings page, and the launch shortcut is managed in chrome://extensions/shortcuts.</p></details>
+      <details><summary>Which browsers does Showmark support?</summary><p>Google Chrome 125 or newer and other Chromium browsers such as Microsoft Edge, Brave, Arc, Vivaldi and Opera. It cannot draw on browser pages such as chrome:// or the Chrome Web Store.</p></details>
+      <details><summary>Is Showmark free?</summary><p>Yes. Showmark is free, has no account and no ads.</p></details>
+    </section>
+
+    <section id="privacy-summary">
+      <div class="privacy">
+        <h2 style="font-size:1.375rem">Privacy in one paragraph</h2>
+        <p style="color:var(--muted);margin:0">Your drawings, the pages you visit and anything you type stay in your browser. Preferences are stored on your device. Showmark counts how its own controls are used (which tool, color, shortcut) under a random identifier, with no page addresses or personal data, and you can switch that off in Settings. Full text: <a href="privacy.html">privacy policy</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Carles Salvador · Showmark</span>
+    <span><a href="https://github.com/csbertran/showmark">Source on GitHub</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:showmark.support@gmail.com">showmark.support@gmail.com</a></span>
+  </footer>
+</div>
+
+<!-- PostHog web analytics for this landing page only. The extension itself uses a separate first-party client. -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_uBKbcm8kqxYUEsazt9bxXQ3jgDkjHeEuF96sA85FtNo6', { api_host: 'https://eu.i.posthog.com', defaults: '2026-05-30', persistence: 'localStorage' });
+  document.getElementById('install').addEventListener('click', function () { posthog.capture('landing_install_clicked', { placement: 'hero' }); });
+</script>
+</body>
+</html>
