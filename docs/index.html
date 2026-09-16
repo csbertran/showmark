@@ -3,6 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Canonical host is showmark.pages.dev. The GitHub Pages copy of docs/ forwards there,
+    // so old links keep working without leaving a duplicate site online.
+    if (location.hostname.endsWith('.github.io')) {
+      location.replace('https://showmark.pages.dev' + location.pathname.replace(/^\/showmark/, ''));
+    }
+  </script>
   <title>Showmark – Draw and annotate on any web page while you present</title>
   <meta name="description" content="Showmark is a modern Chrome extension to draw rectangles, circles and freehand highlights on any web page while presenting or screen sharing. Auto-erase, keyboard shortcuts, nothing leaves your browser.">
   <link rel="canonical" href="https://showmark.pages.dev/">

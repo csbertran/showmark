@@ -3,6 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Canonical host is showmark.pages.dev. The GitHub Pages copy of docs/ forwards there,
+    // so old links keep working without leaving a duplicate site online.
+    if (location.hostname.endsWith('.github.io')) {
+      location.replace('https://showmark.pages.dev' + location.pathname.replace(/^\/showmark/, ''));
+    }
+  </script>
   <title>Privacy Policy – Showmark</title>
   <meta name="description" content="What the Showmark Chrome extension stores on your device, which anonymous usage statistics it collects, and how to turn them off.">
   <link rel="canonical" href="https://showmark.pages.dev/privacy">
