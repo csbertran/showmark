@@ -1,10 +1,30 @@
+<div align="center">
+
+<img src="icons/icon128.png" alt="" width="96" height="96">
+
 # Showmark
 
-A modern annotation tool for Chrome: draw rectangles, circles and freehand strokes on any web page while you present, demo or screen share. Compact dark toolbar, smooth un-draw animations, keyboard-first. No build step, no dependencies. Drawings never leave the browser; anonymous usage statistics can be switched off in settings.
+**Draw on any web page while you present.**
+
+Rectangles, circles and freehand highlights on top of any site, for demos, classes
+and screen shares. Shapes erase themselves, everything is keyboard-driven, and your
+drawings never leave the browser.
+
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/dfojhmdfkljmojndockacpejlbflgpll?style=flat-square&label=Chrome%20Web%20Store&color=ff985b)](https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll)
+[![Users](https://img.shields.io/chrome-web-store/users/dfojhmdfkljmojndockacpejlbflgpll?style=flat-square&label=users&color=1e2024)](https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll)
+[![Chrome 125+](https://img.shields.io/badge/Chrome-125%2B-1e2024?style=flat-square)](#install)
+[![Website](https://img.shields.io/badge/site-showmark.pages.dev-1e2024?style=flat-square)](https://showmark.pages.dev/)
+
+**[Add to Chrome](https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll)** · [Website](https://showmark.pages.dev/) · [Privacy](https://showmark.pages.dev/privacy)
+
+<img src="store-assets/screenshot-1.png" alt="A dashboard page annotated with Showmark: an orange rectangle around a metric card, a red circle around a button, a green underline under a chart peak and a freehand arrow, with the floating toolbar at the bottom" width="820">
+
+</div>
 
 Works in Chrome 125+ and other Chromium browsers (Edge, Brave, Arc, Vivaldi, Opera).
+No build step, no dependencies. Anonymous usage statistics can be switched off in settings.
 
-Website: https://showmark.pages.dev/ (source in `docs/`, deployed to Cloudflare Pages with `./deploy-site.sh`).
+Website source is in `docs/`, deployed to Cloudflare Pages with `./deploy-site.sh`.
 
 ## Install
 
