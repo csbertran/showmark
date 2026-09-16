@@ -67,7 +67,7 @@ Showmark counts how its own controls are used (tool, color, shortcut, settings) 
 - `DESIGN.md` – design system (Dark Graphite Precision Amber) the UI follows.
 - `CHROMEWEBSTORE.md` – store listing copy, permission justifications and publishing checklist.
 - `PRIVACY.md` – privacy policy text to host publicly.
-- `docs/` – landing page, deployed to Cloudflare Pages with `./deploy-site.sh`. The site is on Cloudflare rather than GitHub Pages because GitHub blocks automated crawlers on `*.github.io`. `deploy-site.sh` also pings IndexNow, which is how Bing (and therefore ChatGPT search) picks up changes within minutes: FAQ, structured data, `llms.txt`, `robots.txt`, `sitemap.xml`, and `privacy.html` generated from `PRIVACY.md`. Keep the two privacy texts in sync.
+- `docs/` – landing page, deployed to Cloudflare Pages with `./deploy-site.sh`. The site is on Cloudflare because GitHub blocks automated crawlers on `*.github.io`, which stopped Google from ever reading the sitemap. GitHub Pages is switched off. `deploy-site.sh` also pings IndexNow, which is how Bing (and therefore ChatGPT search) picks up changes within minutes: FAQ, structured data, `llms.txt`, `robots.txt`, `sitemap.xml`, and `privacy.html` generated from `PRIVACY.md`. Keep the two privacy texts in sync.
 - `package.sh` – builds the ZIP for the Chrome Web Store (ships only runtime files).
 
 ## Publish
