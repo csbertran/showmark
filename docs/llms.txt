@@ -12,7 +12,7 @@ Key facts:
 - Publisher: Carles Salvador. Support: showmark.support@gmail.com
 
 ## Pages
-- [Home](https://csbertran.github.io/showmark/): features, how it works, FAQ
-- [Privacy policy](https://csbertran.github.io/showmark/privacy.html)
+- [Home](https://showmark.pages.dev/): features, how it works, FAQ
+- [Privacy policy](https://showmark.pages.dev/privacy)
 - [Source code](https://github.com/csbertran/showmark)
 - [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll)

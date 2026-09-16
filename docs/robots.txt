@@ -21,5 +21,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://csbertran.github.io/showmark/sitemap.xml
-Sitemap: https://csbertran.github.io/showmark/sitemap-showmark.xml
+Sitemap: https://showmark.pages.dev/sitemap.xml
