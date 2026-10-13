@@ -40,7 +40,7 @@ options/options.js ──┘
 
 - Never send page URLs, titles, hostnames, page content, drawings, coordinates, or free text. Chrome's
   "cannot access" error message contains the page URL, which is why `overlay_activation_failed` only
-  sends `reason: 'restricted_page'`.
+  sends `reason: 'restricted_page'` and a `page_kind` category derived from the message on the device.
 - Properties are sanitized to flat primitives (string ≤ 100 chars, number, boolean, null); objects other
   than `$set` / `$set_once` are dropped. Event names must match `^[a-z][a-z0-9_]{1,63}$`.
 - Color values are the hex strings the user picked; shortcut `key` is the single letter or digit bound to an
@@ -55,7 +55,9 @@ Common properties on every event: `$lib` (`showmark-extension`), `$lib_version`,
 |---|---|---|---|
 | `extension_installed` | background.js | First install | `$set` person props, `$set_once { installed_at, initial_extension_version }` |
 | `extension_updated` | background.js | Version changed | `previous_version`, `$set` person props |
-| `overlay_activation_failed` | background.js | Launch on chrome://, Web Store, PDF | `reason: 'restricted_page'` |
+| `overlay_activation_failed` | background.js | First launch attempt on a restricted page in a tab (chrome://, Web Store, PDF viewer, file:// without access) | `reason: 'restricted_page'`, `page_kind` (`browser` \| `webstore` \| `pdf` \| `file` \| `other`) |
+| `blocked_popup_viewed` | popup/blocked.js | "Can't run here" popup shown. Opens automatically after the failure (Chrome 127+); later clicks or shortcut presses on that tab open it directly instead of failing again | `page_kind`, `retry` |
+| `file_access_settings_opened` | popup/blocked.js | "Allow access to local files" clicked | — |
 | `overlay_activated` | content/showmark.js | Overlay opened (icon or shortcut) | `tool`, `fade_enabled`, `fade_seconds`, `toolbar_collapsed`, `toolbar_moved` |
 | `overlay_deactivated` | content/showmark.js | Overlay closed explicitly | `via` (`toolbar` \| `exit_key` \| `double_escape` \| `launcher` \| `reload`), `duration_seconds`, `shapes_drawn`, `clears` |
 | `shape_drawn` | content/showmark.js | Shape finished | `shape` (`rect` \| `circle` \| `free`), `fade_enabled`, `fade_seconds`, `constrained`, `is_dot` |
@@ -66,7 +68,8 @@ Common properties on every event: `$lib` (`showmark-extension`), `$lib_version`,
 | `toolbar_toggled` | content/showmark.js | Toolbar collapsed / expanded | `collapsed`, `via` |
 | `toolbar_moved` | content/showmark.js | Toolbar dragged | `collapsed` |
 | `settings_opened` | content/showmark.js | Gear button | `via: 'toolbar'` |
-| `settings_page_viewed` | options/options.js | Settings / onboarding page loaded | `launch_shortcut_assigned` |
+| `settings_page_viewed` | options/options.js | Settings / onboarding page loaded | `launch_shortcut_assigned`, `toolbar_pinned` (null if unknown), `is_onboarding` (the visit opened right after install) |
+| `launch_icon_pinned` | options/options.js | Icon pinned while the settings page is open | `launch_shortcut_assigned` |
 | `launch_shortcut_page_opened` | options/options.js | Opened chrome://extensions/shortcuts | `via` (`setup` \| `change`) |
 | `drawing_shortcut_changed` | options/options.js | Shortcut remapped | `action`, `key` |
 | `drawing_shortcuts_reset` | options/options.js | Reset to defaults | — |
@@ -85,8 +88,11 @@ explicit exits. Nothing fires while the overlay is idle.
 4. Shapes drawn by tool — `shape_drawn` by `shape`
 5. Weekly retention — first `overlay_activated` → returning `overlay_activated`
 6. Feature usage — unique installs per secondary feature, 30 days
-7. Launch shortcut bound at onboarding — `settings_page_viewed` by `launch_shortcut_assigned`
-8. Friction — `overlay_activation_failed` and `analytics_toggled { enabled: false }`
+7. Launch shortcut bound at onboarding — `settings_page_viewed` where `is_onboarding = true`, by
+   `launch_shortcut_assigned` (earlier versions fired on every visit, so pre-1.2.0 numbers are biased)
+8. Friction — `overlay_activation_failed` by `page_kind`, `blocked_popup_viewed` where `retry = true`, and
+   `analytics_toggled { enabled: false }`. Since 1.2.0 `overlay_activation_failed` fires once per tab and page
+   instead of on every retry, so expect a drop that isn't a real change in behavior
 
 ## Adding an event
 

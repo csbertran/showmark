@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Showmark can't run here</title>
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="../icons/icon48.png" alt="" width="24" height="24">
+      <h1>Showmark can't draw on this page</h1>
+    </header>
+    <p id="reason"></p>
+    <p id="fix" hidden>
+      <button id="file-access" class="primary">Allow access to local files</button>
+      <span class="hint">Turn on "Allow access to file URLs", then reload this page.</span>
+    </p>
+    <p class="hint">It works on any regular website. <button id="settings" class="link">Settings</button></p>
+  </main>
+  <script src="blocked.js"></script>
+</body>
+</html>

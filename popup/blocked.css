@@ -1,0 +1,21 @@
+/* Same tokens as options/options.css */
+:root {
+  color-scheme: dark;
+  --surface: #111317; --surface-1: #16181d; --border: #282a2e;
+  --fg: #e2e2e8; --muted: #9ca3af; --primary: #ff985b; --on-primary: #111317; --primary-glow: rgba(255,152,91,.25);
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; width: 300px; background: var(--surface); color: var(--fg); font: 400 0.8125rem/1.25rem var(--sans); }
+main { padding: 14px 16px; }
+header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+h1 { font: 600 0.875rem/1.25rem var(--sans); letter-spacing: -0.01em; margin: 0; }
+p { margin: 0 0 10px; }
+p:last-child { margin-bottom: 0; }
+.hint { color: var(--muted); font-size: 0.75rem; line-height: 1.125rem; }
+#fix .hint { display: block; margin-top: 6px; }
+.primary { appearance: none; border: 0; background: var(--primary); color: var(--on-primary); font: 600 0.8125rem/1 var(--sans);
+           height: 32px; padding: 0 12px; border-radius: 6px; cursor: pointer; transition: filter .12s ease, box-shadow .12s ease; }
+.primary:hover, .primary:focus-visible { outline: 0; filter: brightness(1.08); box-shadow: 0 0 0 1px var(--primary), 0 0 12px var(--primary-glow); }
+.link { appearance: none; border: 0; background: none; color: var(--primary); font: inherit; padding: 0; cursor: pointer;
+        text-decoration: underline; text-underline-offset: 2px; }

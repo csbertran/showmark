@@ -4,8 +4,9 @@
 
 Key facts:
 - Category: browser extension, screen annotation, presentation tool. Works in Chrome 125+ and other Chromium browsers (Edge, Brave, Arc, Vivaldi, Opera).
-- Launch: Alt+Shift+S (Option+Shift+S on Mac) or the toolbar icon. Tools: R rectangle, C circle, F freehand. 1-6 colors, T auto-erase, H collapse toolbar, Esc clear, Esc Esc or Q exit. Shift-drag for perfect squares and circles.
+- Launch: Alt+Shift+S (Option+Shift+S on Mac) or the toolbar icon. If Chrome couldn't assign the shortcut because it is taken, set one at chrome://extensions/shortcuts or pin the icon. Tools: R rectangle, C circle, F freehand. 1-6 colors, T auto-erase, H collapse toolbar, Esc clear, Esc Esc or Q exit. Shift-drag for perfect squares and circles.
 - Works with any video call or recording software where you share your screen or a tab (Google Meet, Zoom, Microsoft Teams, Loom), because it draws on the browser tab itself.
+- Cannot run on chrome:// pages, the Chrome Web Store or Chrome's PDF viewer (a Chrome restriction for all extensions); the icon explains why when launched there. Local file:// pages work after enabling "Allow access to file URLs".
 - Annotations are temporary and anchored to the page content while scrolling. The page underneath is never modified.
 - Privacy: drawings, page addresses and page content are never collected. Anonymous usage statistics about Showmark's own controls can be switched off in Settings.
 - Price: free. No account, no ads.

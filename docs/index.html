@@ -34,7 +34,7 @@
         "sameAs": ["https://chromewebstore.google.com/detail/showmark-modern-draw-anno/dfojhmdfkljmojndockacpejlbflgpll", "https://github.com/csbertran/showmark"],
         "image": "https://showmark.pages.dev/img/og.png",
         "screenshot": "https://showmark.pages.dev/img/annotate.png",
-        "softwareVersion": "1.1.0",
+        "softwareVersion": "1.2.0",
         "featureList": [
           "Rectangle, circle and freehand drawing on any web page",
           "Auto-erase after 2, 5 or 10 seconds",
@@ -56,7 +56,9 @@
           { "@type": "Question", "name": "Does Showmark save or upload my drawings or the pages I visit?", "acceptedAnswer": { "@type": "Answer", "text": "No. Drawings exist only while the overlay is open and are discarded when you exit, reload or navigate. Page addresses and content are never collected. Showmark counts how its own buttons and shortcuts are used under a random identifier, and you can switch that off in Settings." } },
           { "@type": "Question", "name": "Do annotations stay in place when I scroll?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shapes are anchored to the page content, so they move with it when you scroll." } },
           { "@type": "Question", "name": "Can I change the keyboard shortcuts?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every drawing shortcut can be remapped on the Settings page, and the launch shortcut is managed in chrome://extensions/shortcuts." } },
-          { "@type": "Question", "name": "Which browsers does Showmark support?", "acceptedAnswer": { "@type": "Answer", "text": "Google Chrome 125 or newer and other Chromium browsers such as Microsoft Edge, Brave, Arc, Vivaldi and Opera. It cannot draw on browser pages such as chrome:// or the Chrome Web Store." } },
+          { "@type": "Question", "name": "What if Alt+Shift+S doesn't start Showmark?", "acceptedAnswer": { "@type": "Answer", "text": "Another extension or app probably already uses that combination, so Chrome couldn't assign it. The Settings page tells you when this happens. Set your own shortcut at chrome://extensions/shortcuts, or pin Showmark from the puzzle-piece menu and click its icon to start drawing." } },
+          { "@type": "Question", "name": "Which browsers does Showmark support?", "acceptedAnswer": { "@type": "Answer", "text": "Google Chrome 125 or newer and other Chromium browsers such as Microsoft Edge, Brave, Arc, Vivaldi and Opera." } },
+          { "@type": "Question", "name": "Why doesn't Showmark work on some pages?", "acceptedAnswer": { "@type": "Answer", "text": "Chrome doesn't let any extension draw on its own pages (chrome:// addresses, settings, new tabs), the Chrome Web Store or its built-in PDF viewer. If you launch Showmark there, the icon explains why. Local files opened from your computer work once you turn on Allow access to file URLs for Showmark in chrome://extensions." } },
           { "@type": "Question", "name": "Is Showmark free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Showmark is free, has no account and no ads." } }
         ]
       }
@@ -224,7 +226,9 @@
       <details><summary>Does Showmark save or upload my drawings or the pages I visit?</summary><p>No. Drawings exist only while the overlay is open and are discarded when you exit, reload or navigate. Page addresses and content are never collected. Showmark counts how its own buttons and shortcuts are used under a random identifier, and you can switch that off in Settings. <a href="privacy.html">Privacy policy</a>.</p></details>
       <details><summary>Do annotations stay in place when I scroll?</summary><p>Yes. Shapes are anchored to the page content, so they move with it when you scroll.</p></details>
       <details><summary>Can I change the keyboard shortcuts?</summary><p>Yes. Every drawing shortcut can be remapped on the Settings page, and the launch shortcut is managed in chrome://extensions/shortcuts.</p></details>
-      <details><summary>Which browsers does Showmark support?</summary><p>Google Chrome 125 or newer and other Chromium browsers such as Microsoft Edge, Brave, Arc, Vivaldi and Opera. It cannot draw on browser pages such as chrome:// or the Chrome Web Store.</p></details>
+      <details><summary>What if Alt+Shift+S doesn't start Showmark?</summary><p>Another extension or app probably already uses that combination, so Chrome couldn't assign it. The Settings page tells you when this happens. Set your own shortcut at chrome://extensions/shortcuts, or pin Showmark from the puzzle-piece menu and click its icon to start drawing.</p></details>
+      <details><summary>Which browsers does Showmark support?</summary><p>Google Chrome 125 or newer and other Chromium browsers such as Microsoft Edge, Brave, Arc, Vivaldi and Opera.</p></details>
+      <details><summary>Why doesn't Showmark work on some pages?</summary><p>Chrome doesn't let any extension draw on its own pages (chrome:// addresses, settings, new tabs), the Chrome Web Store or its built-in PDF viewer. If you launch Showmark there, the icon explains why. Local files opened from your computer work once you turn on "Allow access to file URLs" for Showmark in chrome://extensions.</p></details>
       <details><summary>Is Showmark free?</summary><p>Yes. Showmark is free, has no account and no ads.</p></details>
     </section>
 

@@ -21,8 +21,9 @@
     </section>
 
     <section id="shortcut-missing" hidden>
-      <h2>One thing to set up</h2>
-      <p>Chrome couldn't assign a launch shortcut automatically, probably because <kbd>Alt+Shift+S</kbd> is already taken.</p>
+      <h2>Pick a way to launch Showmark</h2>
+      <p>Chrome couldn't assign a launch shortcut automatically, probably because <kbd>Alt+Shift+S</kbd> is already taken. Set one up, pin the icon, or do both.</p>
+      <h3>Set a shortcut</h3>
       <ol>
         <li>Click the button below. It opens your browser's extension shortcuts page.</li>
         <li>Find <strong>Showmark</strong> and click the pencil next to "Toggle Showmark on the current page".</li>
@@ -30,6 +31,9 @@
       </ol>
       <button id="open-shortcuts" class="primary">Open shortcut settings</button>
       <p class="hint">Or open <code>chrome://extensions/shortcuts</code> yourself.</p>
+      <h3>Pin the icon</h3>
+      <p id="pin-todo">Click the puzzle-piece icon in Chrome's toolbar, then the pin next to <strong>Showmark</strong>. Click the Showmark icon on any page to start drawing.</p>
+      <p id="pin-done" class="done" hidden>✓ Pinned. Click the Showmark icon on any page to start drawing.</p>
     </section>
 
     <section>
@@ -74,7 +78,7 @@
 
     <section>
       <h2>Tip</h2>
-      <p>Pin Showmark from the puzzle-piece menu in the toolbar so you can also launch it with a click. Drag the drawing toolbar by its handle to move it; it remembers where you left it.</p>
+      <p><span id="pin-tip">Pin Showmark from the puzzle-piece menu in the toolbar so you can also launch it with a click. </span>Drag the drawing toolbar by its handle to move it; it remembers where you left it.</p>
     </section>
 
     <footer>

@@ -148,6 +148,7 @@ https://showmark.pages.dev/ (Cloudflare Pages, deployed from `docs/`). It is on 
 | 1.0.0 | 2026-09-11 | First release: rectangle, circle and freehand tools; per-shape auto-erase with un-draw animation; color presets and custom picker; draggable, collapsible toolbar; keyboard shortcuts; settings page (also onboarding) with launch-shortcut status, remappable drawing shortcuts and drawing defaults. | Not submitted (superseded by 1.1.0) |
 | 1.1.0 | 2026-09-11 | Anonymous usage statistics (PostHog EU) with an off switch in settings; service worker is now an ES module. Privacy policy and data disclosure updated: "User activity" now collected. | Draft |
 | 1.1.0 | 2026-09-12 | Listing repositioned around "modern": new name, short description and a "Why Showmark" section; five screenshots and both promo tiles added. Submitted 2026-09-12, approved and published 2026-09-13. | Published |
+| 1.2.0 | 2026-10-13 | Restricted pages (browser pages, Web Store, PDF viewer, local files) now open a popup explaining why Showmark can't run there, with a one-click fix for local files. Onboarding offers pinning the icon as a second way to launch when Chrome couldn't assign the shortcut. No new permissions. Usage statistics gain a page category (never the URL) and pinned-icon state; data disclosure unchanged. | Draft |
 
 ## Positioning
 
@@ -156,7 +157,7 @@ https://showmark.pages.dev/ (Cloudflare Pages, deployed from `docs/`). It is on 
 ## Review Notes
 
 ### Known Issues / Limitations
-- Cannot run on browser pages (`chrome://…`), the Chrome Web Store, or the built-in PDF viewer. The icon shows a red "!" badge on those tabs instead.
+- Cannot run on browser pages (`chrome://…`), the Chrome Web Store, or the built-in PDF viewer. On those tabs the icon shows a red "!" badge and opens a popup explaining why (`popup/blocked.html`). Local `file://` pages work once the user turns on "Allow access to file URLs"; the popup links there.
 - Requires Chrome 125 or newer (`minimum_chrome_version`), for native popover and anchor positioning in the toolbar.
 - Annotations are intentionally not persisted.
 - Package with `./package.sh`; it excludes docs, the design system, the raw logo, and the skills folders.

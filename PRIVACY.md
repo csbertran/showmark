@@ -1,6 +1,6 @@
 # Privacy Policy for Showmark
 
-Last updated: 2026-09-11
+Last updated: 2026-10-13
 
 Showmark draws temporary annotations on the page you are looking at. Your drawings, the pages you visit and anything you type stay in your browser. The extension collects anonymous usage statistics about its own controls, and you can turn that off at any time.
 
@@ -15,6 +15,8 @@ Annotations you draw exist only while the overlay is open. They are discarded wh
 To learn which features matter, Showmark counts how its own controls are used. Each install gets a random identifier that is not linked to your name, email address, Google account or browsing history. Each record contains:
 
 - The action inside Showmark, for example "shape drawn", "color changed" or "settings page viewed", together with the setting values involved: which tool, which color, the auto-erase delay, which shortcut key.
+- When Showmark can't run on a page, only the kind of page it was blocked on: a browser page, the Chrome Web Store, the PDF viewer, a local file, or other. Never its address.
+- Whether a launch shortcut is set and whether the Showmark icon is pinned to the toolbar.
 - The extension version, browser name and version, operating system and interface language.
 - The time it happened.
 

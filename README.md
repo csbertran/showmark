@@ -72,7 +72,7 @@ Showmark counts how its own controls are used (tool, color, shortcut, settings) 
 
 ## Limitations
 
-- Cannot run on browser pages (`chrome://…`), the Chrome Web Store, or the built-in PDF viewer. The icon shows a red "!" badge on those tabs.
+- Cannot run on browser pages (`chrome://…`), the Chrome Web Store, or the built-in PDF viewer. On those tabs the icon shows a red "!" badge and a popup explaining why. Local files work once "Allow access to file URLs" is on.
 - Annotations are ephemeral: they disappear when you exit, reload or navigate.
 
 ## Files

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Showmark: Modern Draw & Annotate on Any Web Page",
   "short_name": "Showmark",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A modern way to annotate any web page while presenting: rectangles, circles & freehand highlights, auto-erase, keyboard shortcuts.",
   "minimum_chrome_version": "125",
   "permissions": [

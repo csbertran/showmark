@@ -51,14 +51,32 @@ async function refreshLaunchShortcut() {
   ok.hidden = true; missing.hidden = false;
   return false;
 }
+// Without a shortcut, the pinned toolbar icon is the only way to launch, so the missing-shortcut card covers both.
+async function refreshPinned() {
+  let pinned = null;
+  try { pinned = (await chrome.action.getUserSettings()).isOnToolbar; } catch {}
+  $('#pin-todo').hidden = pinned === true;
+  $('#pin-done').hidden = pinned !== true;
+  $('#pin-tip').hidden = pinned === true || !$('#shortcut-missing').hidden;
+  return pinned;
+}
+let lastPinned;
+async function refreshLaunchOptions() {
+  const assigned = await refreshLaunchShortcut();
+  const pinned = await refreshPinned();
+  if (lastPinned === false && pinned === true) track('launch_icon_pinned', { launch_shortcut_assigned: assigned });
+  lastPinned = pinned;
+  return { assigned, pinned };
+}
 const openShortcutsPage = (via) => {
   track('launch_shortcut_page_opened', { via });
   chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
 };
 $('#open-shortcuts').addEventListener('click', () => openShortcutsPage('setup'));
 $('#change-shortcut').addEventListener('click', () => openShortcutsPage('change'));
-document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshLaunchShortcut(); });
-window.addEventListener('focus', refreshLaunchShortcut);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshLaunchOptions(); });
+window.addEventListener('focus', refreshLaunchOptions);
+chrome.action.onUserSettingsChanged?.addListener(refreshLaunchOptions); // Chrome 130+, so pinning updates live
 
 // ---------- in-overlay shortcuts (ours) ----------
 let recording = null; // { action, button }
@@ -163,10 +181,13 @@ analyticsBox.addEventListener('change', async () => {
 
 // ---------- init ----------
 (async () => {
-  const launchShortcutAssigned = await refreshLaunchShortcut();
+  // background.js opens this page with ?onboarding=1 right after install; drop it so a reload isn't counted again.
+  const isOnboarding = new URLSearchParams(location.search).has('onboarding');
+  if (isOnboarding) history.replaceState(null, '', location.pathname);
+  const { assigned, pinned } = await refreshLaunchOptions();
   const settings = await loadSettings();
   renderKeys(settings.keys);
   renderDrawing(settings);
   await renderAnalytics();
-  track('settings_page_viewed', { launch_shortcut_assigned: launchShortcutAssigned });
+  track('settings_page_viewed', { launch_shortcut_assigned: assigned, toolbar_pinned: pinned, is_onboarding: isOnboarding });
 })();
